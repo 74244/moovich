@@ -5,41 +5,42 @@ export const category = {
   premieres: "premieres",
 };
 
-// export const topType = {
-//   TOP_250_BEST_FILMS: 'TOP_250_BEST_FILMS',
-//   TOP_100_PUPULAR_FILMS: 'TOP_100_PUPULAR_FILMS',
-//   TOP_AWAIT_FILMS: 'TOP_AWAIT_FILMS'
-// }
+export const topType = {
+  TOP_250_BEST_FILMS: 'TOP_250_BEST_FILMS',
+  TOP_100_PUPULAR_FILMS: 'TOP_100_PUPULAR_FILMS',
+  TOP_AWAIT_FILMS: 'TOP_AWAIT_FILMS'
+}
 
-// export const premieresType = {
-//   JANUARY: 'JANUARY',
-//   FEBRUARY: 'FEBRUARY',
-//   MARCH: 'MARCH',
-//   APRIL: 'APRIL',
-//   MAY: 'MAY',
-//   JUNE: 'JUNE',
-//   JULY: 'JULY',
-//   AUGUST: 'AUGUST',
-//   SEPTEMBER: 'SEPTEMBER',
-//   OCTOBER: 'OCTOBER',
-//   NOVEMBER: 'NOVEMBER',
-//   DECEMBER: 'DECEMBER'
-// }
+export const premieresType = {
+  JANUARY: 'JANUARY',
+  FEBRUARY: 'FEBRUARY',
+  MARCH: 'MARCH',
+  APRIL: 'APRIL',
+  MAY: 'MAY',
+  JUNE: 'JUNE',
+  JULY: 'JULY',
+  AUGUST: 'AUGUST',
+  SEPTEMBER: 'SEPTEMBER',
+  OCTOBER: 'OCTOBER',
+  NOVEMBER: 'NOVEMBER',
+  DECEMBER: 'DECEMBER'
+}
 
 const kpApi = {
-  getTopMoviesList: (type, params) => {
-    const url = "films/top/" + topType[type];
-    return axiosClient.get(url, params);
+  getTopMoviesList: (params) => {
+    const url = "films/top";
+    const t1 = axiosClient.get(url, params)
+    return t1;
   },
-  getPremieresMoviesList: (type, params) => {
-    const url = "films/premieres/" + premieresType[type];
+  getPremieresMoviesList: (params) => {
+    const url = "films/premieres";
     return axiosClient.get(url, params);
   },
   getVideos: (id) => {
     const url = "films/" + id + "/videos";
     return axiosClient.get(url, { params: {} });
   },
-  search: () => {
+  search: (params) => {
     const url = "films/seach-by-keyword/";
     return axiosClient.get(url, params);
   },
