@@ -16,16 +16,16 @@ const Home = () => {
         <div className="section mb-3">
           <div className="section__header mb-2">
             <h2>250 Лучших фильмов</h2>
-            <Link to='films/top'>
+            <Link to='/top'>
               <OutlineButton>Посмотреть больше</OutlineButton>
             </Link>
           </div>
-          <MovieList category={category.top} type={topType.TOP_250_BEST_FILMS}/>
+          <MovieList category={category.premieres} type={topType.TOP_250_BEST_FILMS}/>
         </div>
-        <div className="section mb-3">
+        {/* <div className="section mb-3">
           <div className="section__header mb-2">
             <h2>100 Популярных фильмов</h2>
-            <Link to='films/premieres'>
+            <Link to='/premieres'>
               <OutlineButton>Посмотреть больше</OutlineButton>
             </Link>
           </div>
@@ -34,16 +34,16 @@ const Home = () => {
         <div className="section mb-3">
           <div className="section__header mb-2">
             <h2>Топ ожидаемых фильмов</h2>
-            <Link to='films/premieres'>
+            <Link to='/premieres'>
               <OutlineButton>Посмотреть больше</OutlineButton>
             </Link>
           </div>
           <MovieList category={category.top} type={topType.TOP_AWAIT_FILMS}/>
-        </div>
+        </div> */}
         {/* <div className="section mb-3">
           <div className="section__header mb-2">
             <h2>Премьеры</h2>
-            <Link to='films/premieres'>
+            <Link to='/premieres'>
               <OutlineButton>Посмотреть больше</OutlineButton>
             </Link>
           </div>

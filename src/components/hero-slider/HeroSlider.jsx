@@ -7,7 +7,7 @@ import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import Button, { OutlineButton } from '../button/Button';
 import Modal, { ModalContent } from '../modal/Modal';
 
-import kpApi from "../../api/kpApi";
+import kpApi, { category, topType } from "../../api/kpApi";
 import apiConfig from "../../api/apiConfig";
 
 import './hero-slider.scss'
@@ -16,9 +16,9 @@ const HeroSlider = () => {
     const [topMovieItems, setTopMovieItems] = useState([])
     useEffect(() => {
         const getTopMovies = async () => {
-            const params = { type: 'TOP_250_BEST_FILMS' }
+            const params = {}
             try {
-                const response = await kpApi.getTopMoviesList({ params });
+                const response = await kpApi.getTopMoviesList(topType.TOP_100_POPULAR_FILMS, { params });
                 setTopMovieItems(response.films.slice(1, 4));
                 // console.log(response);
             } catch {
@@ -70,7 +70,7 @@ const HeroSliderItem = props => {
     const setModalActive = async () => {
         const modal = document.querySelector(`#modal_${item.filmId}`)
 
-        const videos = await kpApi.getVideos(item.filmId)
+        const videos = await kpApi.getVideos(category, item.filmId)
         console.log(videos)
         if (videos.items.length > 0) {
             const videoSrc = videos.items[0].url;

@@ -4,14 +4,14 @@ import { Routes, Route } from "react-router-dom";
 
 import Home from "../pages/Home";
 import Catalog from "../pages/Catalog";
-import Detail from "../pages/Detail";
+import Detail from "../pages/detail/Detail";
 
 const AppRouter = () => {
     return (
         <Routes>
-            <Route path="/films/seach-by-keyword/:keyword" element={<Catalog />} />
-            <Route path="/films/:id" element={<Detail />} />
-            {/* <Route path="/" element={<Home />}/> */}
+            <Route path="/:category/search/:keyword" element={<Catalog />} />
+            <Route path="/:category/:id" element={<Detail />} />
+            <Route path="/:category" element={<Catalog />} />
             <Route path="/" element={<Home />} />
         </Routes>
     )

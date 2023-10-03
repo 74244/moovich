@@ -5,6 +5,7 @@ import './movie-list.scss';
 
 import { SwiperSlide, Swiper } from "swiper/react";
 import { Link } from "react-router-dom";
+import MovieCard from "../movie-card/MovieCard";
 
 import Button from "../button/Button";
 
@@ -17,19 +18,23 @@ const MovieList = props => {
     useEffect(() => {
         const getList = async () => {
             let response = null;
-            const paramsTop = {type: props.type};
+            const params = {}
+            // const paramsTop = { type: props.type };
             // const paramsPremieres = { year: props.year, month: props.month,};
             if (props.type !== 'similar') {
                 switch (props.category) {
-                    case category.top:
-                        response = await kpApi.getTopMoviesList({ paramsTop });
+                    case category.premieres:
+                        response = await kpApi.getPremieresMoviesList({ year: 2023, month: "JANUARY" })
+                        // response = await kpApi.getTopMoviesList(props.type, { params });
                         break;
                     default:
-                        response = await kpApi.getPremieresMoviesList({ year: props.year, month: props.month })
+                        response = await kpApi.getTopMoviesList(props.type, { params });
+
+                        // response = await kpApi.getPremieresMoviesList(props.type, { year: 2023, month: "APRIL" })
                         console.log(response)
                 }
             } else {
-                response = await kpApi.similar(props.id)
+                response = await kpApi.similar(props.category, props.filmId)
             };
             setItems(response.films)
         }
@@ -44,9 +49,9 @@ const MovieList = props => {
                 slidesPerView={'auto'}
             >
                 {
-                    items.map((item, i) => 
+                    items.map((item, i) =>
                         <SwiperSlide key={i}>
-                            <img src={`https://kinopoiskapiunofficial.tech/images/posters/kp_small/${item.filmId}.jpg`} alt="" />
+                            <MovieCard item={item} category={props.category} />
                         </SwiperSlide>
                     )
                 }
